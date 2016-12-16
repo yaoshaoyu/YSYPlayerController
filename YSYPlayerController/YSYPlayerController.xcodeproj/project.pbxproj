@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		493D97DB1E03EABA00533CDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 493D97DA1E03EABA00533CDB /* main.m */; };
+		493D97DE1E03EABA00533CDB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 493D97DD1E03EABA00533CDB /* AppDelegate.m */; };
+		493D97E11E03EABA00533CDB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493D97E01E03EABA00533CDB /* ViewController.m */; };
+		493D97E41E03EABA00533CDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493D97E21E03EABA00533CDB /* Main.storyboard */; };
+		493D97E61E03EABA00533CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 493D97E51E03EABA00533CDB /* Assets.xcassets */; };
+		493D97E91E03EABA00533CDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493D97E71E03EABA00533CDB /* LaunchScreen.storyboard */; };
+		493D97F31E03EB0300533CDB /* YSYPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493D97F21E03EB0300533CDB /* YSYPlayerController.m */; };
+		77BC94858139487181DC4A73 /* libPods-YSYPlayerController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B321F947D6E2E761A136A9 /* libPods-YSYPlayerController.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		493D97D61E03EABA00533CDB /* YSYPlayerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSYPlayerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		493D97DA1E03EABA00533CDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		493D97DC1E03EABA00533CDB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		493D97DD1E03EABA00533CDB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		493D97DF1E03EABA00533CDB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		493D97E01E03EABA00533CDB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		493D97E31E03EABA00533CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		493D97E51E03EABA00533CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		493D97E81E03EABA00533CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		493D97EA1E03EABB00533CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		493D97F11E03EB0300533CDB /* YSYPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSYPlayerController.h; sourceTree = "<group>"; };
+		493D97F21E03EB0300533CDB /* YSYPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSYPlayerController.m; sourceTree = "<group>"; };
+		4B60A3639D250AFF91C1A339 /* Pods-YSYPlayerController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSYPlayerController.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSYPlayerController/Pods-YSYPlayerController.release.xcconfig"; sourceTree = "<group>"; };
+		A358175F7562D9E3D9D8159C /* Pods-YSYPlayerController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSYPlayerController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YSYPlayerController/Pods-YSYPlayerController.debug.xcconfig"; sourceTree = "<group>"; };
+		F0B321F947D6E2E761A136A9 /* libPods-YSYPlayerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YSYPlayerController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		493D97D31E03EABA00533CDB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77BC94858139487181DC4A73 /* libPods-YSYPlayerController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		095EEB1C809CFC3CF2EC37EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0B321F947D6E2E761A136A9 /* libPods-YSYPlayerController.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		493D97CD1E03EABA00533CDB = {
+			isa = PBXGroup;
+			children = (
+				493D97D81E03EABA00533CDB /* YSYPlayerController */,
+				493D97D71E03EABA00533CDB /* Products */,
+				ABE2A0EF517890E1B1AAB41B /* Pods */,
+				095EEB1C809CFC3CF2EC37EB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		493D97D71E03EABA00533CDB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				493D97D61E03EABA00533CDB /* YSYPlayerController.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		493D97D81E03EABA00533CDB /* YSYPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				493D97F01E03EAF200533CDB /* YSYPlayerController */,
+				493D97DC1E03EABA00533CDB /* AppDelegate.h */,
+				493D97DD1E03EABA00533CDB /* AppDelegate.m */,
+				493D97DF1E03EABA00533CDB /* ViewController.h */,
+				493D97E01E03EABA00533CDB /* ViewController.m */,
+				493D97E21E03EABA00533CDB /* Main.storyboard */,
+				493D97E51E03EABA00533CDB /* Assets.xcassets */,
+				493D97E71E03EABA00533CDB /* LaunchScreen.storyboard */,
+				493D97EA1E03EABB00533CDB /* Info.plist */,
+				493D97D91E03EABA00533CDB /* Supporting Files */,
+			);
+			path = YSYPlayerController;
+			sourceTree = "<group>";
+		};
+		493D97D91E03EABA00533CDB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				493D97DA1E03EABA00533CDB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		493D97F01E03EAF200533CDB /* YSYPlayerController */ = {
+			isa = PBXGroup;
+			children = (
+				493D97F11E03EB0300533CDB /* YSYPlayerController.h */,
+				493D97F21E03EB0300533CDB /* YSYPlayerController.m */,
+			);
+			path = YSYPlayerController;
+			sourceTree = "<group>";
+		};
+		ABE2A0EF517890E1B1AAB41B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A358175F7562D9E3D9D8159C /* Pods-YSYPlayerController.debug.xcconfig */,
+				4B60A3639D250AFF91C1A339 /* Pods-YSYPlayerController.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		493D97D51E03EABA00533CDB /* YSYPlayerController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 493D97ED1E03EABB00533CDB /* Build configuration list for PBXNativeTarget "YSYPlayerController" */;
+			buildPhases = (
+				31DF43F7D8434B101198E85B /* [CP] Check Pods Manifest.lock */,
+				493D97D21E03EABA00533CDB /* Sources */,
+				493D97D31E03EABA00533CDB /* Frameworks */,
+				493D97D41E03EABA00533CDB /* Resources */,
+				FBA250E02D8FB46A0B20E0AB /* [CP] Embed Pods Frameworks */,
+				6FEAB53645E75AB7889AD9EA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YSYPlayerController;
+			productName = YSYPlayerController;
+			productReference = 493D97D61E03EABA00533CDB /* YSYPlayerController.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		493D97CE1E03EABA00533CDB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = YSY;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Weitac;
+				TargetAttributes = {
+					493D97D51E03EABA00533CDB = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = D68493PKL9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 493D97D11E03EABA00533CDB /* Build configuration list for PBXProject "YSYPlayerController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 493D97CD1E03EABA00533CDB;
+			productRefGroup = 493D97D71E03EABA00533CDB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				493D97D51E03EABA00533CDB /* YSYPlayerController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		493D97D41E03EABA00533CDB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493D97E91E03EABA00533CDB /* LaunchScreen.storyboard in Resources */,
+				493D97E61E03EABA00533CDB /* Assets.xcassets in Resources */,
+				493D97E41E03EABA00533CDB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		31DF43F7D8434B101198E85B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FEAB53645E75AB7889AD9EA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YSYPlayerController/Pods-YSYPlayerController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBA250E02D8FB46A0B20E0AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YSYPlayerController/Pods-YSYPlayerController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		493D97D21E03EABA00533CDB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				493D97E11E03EABA00533CDB /* ViewController.m in Sources */,
+				493D97DE1E03EABA00533CDB /* AppDelegate.m in Sources */,
+				493D97F31E03EB0300533CDB /* YSYPlayerController.m in Sources */,
+				493D97DB1E03EABA00533CDB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		493D97E21E03EABA00533CDB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493D97E31E03EABA00533CDB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		493D97E71E03EABA00533CDB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				493D97E81E03EABA00533CDB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		493D97EB1E03EABB00533CDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		493D97EC1E03EABB00533CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		493D97EE1E03EABB00533CDB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A358175F7562D9E3D9D8159C /* Pods-YSYPlayerController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D68493PKL9;
+				INFOPLIST_FILE = YSYPlayerController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitac.YSYPlayerController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		493D97EF1E03EABB00533CDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B60A3639D250AFF91C1A339 /* Pods-YSYPlayerController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = D68493PKL9;
+				INFOPLIST_FILE = YSYPlayerController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.weitac.YSYPlayerController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		493D97D11E03EABA00533CDB /* Build configuration list for PBXProject "YSYPlayerController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				493D97EB1E03EABB00533CDB /* Debug */,
+				493D97EC1E03EABB00533CDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		493D97ED1E03EABB00533CDB /* Build configuration list for PBXNativeTarget "YSYPlayerController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				493D97EE1E03EABB00533CDB /* Debug */,
+				493D97EF1E03EABB00533CDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 493D97CE1E03EABA00533CDB /* Project object */;
+}
