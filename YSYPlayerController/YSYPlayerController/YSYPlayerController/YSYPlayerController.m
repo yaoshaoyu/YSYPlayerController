@@ -6,8 +6,13 @@
 //  Copyright © 2016年 Weitac. All rights reserved.
 //
 
+
+#warning 在 info.plist文件中，添加 View controller-based status bar appearance 项并设为 NO。
+
+
 #import "YSYPlayerController.h"
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import <CoreMotion/CoreMotion.h>
 #import <Masonry.h>
 
@@ -18,12 +23,21 @@
 #define kFullScreenFrame [UIScreen mainScreen].bounds
 
 
+typedef enum : NSUInteger {
+    YSYPlayerControllerPanDirectionNone,
+    YSYPlayerControllerPanDirectionLeftOrRight,
+    YSYPlayerControllerPanDirectionUpOrDown,
+} YSYPlayerControllerPanDirection;
+
+
 @interface YSYPlayerController ()
 
 /** 加载菊花视图 */
 @property (strong, nonatomic) UIActivityIndicatorView *loadingView;
 /** 加载失败标签 */
 @property (strong, nonatomic) UILabel *loadFailedLabel;
+/** 快进后退标签 */
+@property (strong, nonatomic) UILabel *fastforwardRewindLabel;
 /** 顶部视图 */
 @property (strong, nonatomic) UIView *topView;
 /** 标题标签 */
@@ -58,6 +72,10 @@
 @property (strong, nonatomic) UITapGestureRecognizer *screenSingleTap;
 /** 双击屏幕手势 */
 @property (strong, nonatomic) UITapGestureRecognizer *screenDoubleTap;
+/** 音量视图 */
+@property (strong, nonatomic) MPVolumeView *volumeView;
+/** 音量滑竿 */
+@property (strong, nonatomic) UISlider *volumeViewSlider;
 
 @end
 
@@ -67,6 +85,16 @@
     BOOL _isSliding;
     /** 竖屏视图大小 */
     CGRect _verticalFrame;
+    /** 开始触摸的点 */
+    CGPoint _startPoint;
+    /** 开始触摸时的值 */
+    CGFloat _startValue;
+    /** 滑动的方向 */
+    YSYPlayerControllerPanDirection _panDirection;
+    /** 开始触摸的时间 */
+    CGFloat _startPlayTime;
+    /** 滑动到目标时间 */
+    CGFloat _destinationTime;
 }
 
 - (void)viewDidLoad {
@@ -76,6 +104,7 @@
     [self setupConstraints];
     [self setupGestureRecognizer];
     [self setupMotionManager];
+    [self setupVolumeControl];
 }
 
 - (void)dealloc {
@@ -123,6 +152,85 @@
     return self;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint currentPoint = [touch locationInView:self.view];
+    
+    _startPoint = currentPoint;
+    
+    if (_startPoint.x <= self.view.bounds.size.width * 0.5) {
+        _startValue = [UIScreen mainScreen].brightness;
+    } else {
+        _startValue = _volumeViewSlider.value;
+    }
+    
+    _startPlayTime = _playerItem.currentTime.value / _playerItem.currentTime.timescale;
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    CGPoint currentPoint = [touch locationInView:self.view];
+    
+    CGPoint panPoint = CGPointMake(currentPoint.x - _startPoint.x, currentPoint.y - _startPoint.y);
+    
+    if (_panDirection == YSYPlayerControllerPanDirectionNone) {
+        if (ABS(panPoint.x) > 30) {
+            _panDirection = YSYPlayerControllerPanDirectionLeftOrRight;
+        } else if (ABS(panPoint.y) > 30) {
+            _panDirection = YSYPlayerControllerPanDirectionUpOrDown;
+        }
+    }
+    
+    switch (_panDirection) {
+        case YSYPlayerControllerPanDirectionNone: {
+            return;
+        }
+            break;
+            
+        case YSYPlayerControllerPanDirectionUpOrDown: {
+            if (_startPoint.x <= self.view.frame.size.width * 0.5) {
+                [[UIScreen mainScreen] setBrightness:_startValue - panPoint.y / 30.0 / 10];
+            } else {
+                [_volumeViewSlider setValue:_startValue - panPoint.y / 30.0 / 10 animated:YES];
+                
+                if (_startValue - panPoint.y / 30 / 10 - self.volumeViewSlider.value >= 0.1) {
+                    [_volumeViewSlider setValue:0.1 animated:NO];
+                    
+                    [_volumeViewSlider setValue:_startValue - panPoint.y / 30.0 / 10 animated:YES];
+                }
+            }
+            break;
+            
+        case YSYPlayerControllerPanDirectionLeftOrRight: {
+            CGFloat panTime = panPoint.x / 3;
+            
+            _destinationTime = _startPlayTime + panTime;
+            
+            if (_destinationTime < 0) {
+                _destinationTime = 0;
+            } else if (_destinationTime > CMTimeGetSeconds(_playerItem.duration)) {
+                _destinationTime = CMTimeGetSeconds(_playerItem.duration);
+            }
+            
+            _fastforwardRewindLabel.text = [NSString stringWithFormat:@"%@/%@",[self convertTime:_destinationTime],[self convertTime:CMTimeGetSeconds(_playerItem.duration)]];
+            _fastforwardRewindLabel.hidden = NO;
+        }
+            break;
+            
+        default:
+            break;
+        }
+    }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (_panDirection == YSYPlayerControllerPanDirectionLeftOrRight) {
+        [_player seekToTime:CMTimeMakeWithSeconds(_destinationTime, 1)];
+        
+        _fastforwardRewindLabel.hidden = YES;
+    }
+}
+
 #pragma mark - PublicMethod
 - (void)pause {
     _playPauseButton.selected = YES;
@@ -155,6 +263,13 @@
     _loadFailedLabel.hidden = YES;
     [_loadFailedLabel sizeToFit];
     [self.view addSubview:_loadFailedLabel];
+    
+    _fastforwardRewindLabel = [UILabel new];
+    _fastforwardRewindLabel.textColor = [UIColor whiteColor];
+    _fastforwardRewindLabel.backgroundColor = kTopBottomViewBackgroundColor;
+    _fastforwardRewindLabel.hidden = YES;
+    [_fastforwardRewindLabel sizeToFit];
+    [self.view addSubview:_fastforwardRewindLabel];
     
     _darkView = [[UIView alloc] initWithFrame:kFullScreenFrame];
     _darkView.backgroundColor = [UIColor blackColor];
@@ -251,6 +366,10 @@
         make.center.equalTo(self.view);
     }];
     
+    [_fastforwardRewindLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+    }];
+    
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
         make.height.mas_equalTo(40);
@@ -297,6 +416,23 @@
         make.size.mas_equalTo(CGSizeMake(40, 40));
         make.bottom.right.equalTo(_bottomView);
     }];
+}
+
+/**
+ 设置音量控制器
+ */
+- (void)setupVolumeControl {
+    MPVolumeView *volumeView = [MPVolumeView new];
+    volumeView.frame = self.view.bounds;
+    [volumeView sizeToFit];
+    
+    for (UIView *view in volumeView.subviews) {
+        if ([view.class.description isEqualToString:@"MPVolumeSlider"]) {
+            _volumeViewSlider = (UISlider *)view;
+            
+            break;
+        }
+    }
 }
 
 /**
@@ -362,9 +498,9 @@
 }
 
 /**
- * 把秒转换成格式化时间
+ 把秒转换成格式化时间
  **/
-- (NSString *)convertTime:(CGFloat)second{
+- (NSString *)convertTime:(CGFloat)second {
     NSDateFormatter *formatter = [NSDateFormatter new];
     
     if (second / 3600 >= 1) {
@@ -522,10 +658,10 @@
     CGPoint touchLocation = [recognizer locationInView:_progressSlider];
     
     CGFloat value = (_progressSlider.maximumValue - _progressSlider.minimumValue) * (touchLocation.x / _progressSlider.frame.size.width);
-
+    
     [_progressSlider setValue:value animated:YES];
     _playedTimeLabel.text = [self convertTime:_progressSlider.value];
-
+    
     [_player seekToTime:CMTimeMakeWithSeconds(_progressSlider.value, 1.0)];
     
     if (_player.rate == 0.0 && _playPauseButton.selected == YES) {
@@ -649,6 +785,7 @@
             }
         }
             break;
+            
         default:
             break;
     }
